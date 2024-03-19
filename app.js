@@ -1,14 +1,14 @@
 const textArea = document.querySelector(".text-area");
-const textResult = document.querySelector(".text_result_content_1");
-const inputResult = document.querySelector(".text_result_content_2");
-const inputResultDecrypt = document.querySelector(".text_result_table_input");
+const textResult = document.querySelector(".result_content_1");
+const inputResult = document.querySelector(".result_content_2");
+const inputResultDecrypt = document.querySelector(".result_input");
 const btn_criptografar = document.querySelector("#btn_encrypt");
 const btn_descriptografar = document.querySelector("#btn_decrypt");
 const btn_copy = document.querySelector("#btn_copy");
 
 
 function removeSpecialCharacters(string) {
-  // console.log(string)
+
   return string.replace(/[^a-z0-9\s]+$/g, "");
 }
 
@@ -27,28 +27,26 @@ textArea.addEventListener("input", () => {
 
   }
 
-
-
 })
 
 function criptografar(string) {
   const result = string
-  .replaceAll("a", "ai")
-  .replaceAll("e", "enter")
-  .replaceAll("i", "imes")
-  .replaceAll("o", "ober")
-  .replaceAll("u", "ufat")
-  
+  .replace(/e/gi, "enter")
+  .replace(/i/gi, "imes")
+  .replace(/a/gi, "ai")
+  .replace(/o/gi, "ober")
+  .replace(/u/gi, "ufat");
+
   return result;
 }
 
 function descriptografar(string) {
   const result = string
-  .replaceAll("ai", "a")
-  .replaceAll("enter", "e")
-  .replaceAll("imes", "i")
-  .replaceAll("ober", "o")
-  .replaceAll("ufat", "u")
+  .replace(/enter/gi, "e")
+  .replace(/imes/gi, "i")
+  .replace(/ai/gi, "a")
+  .replace(/ober/gi, "o")
+  .replace(/ufat/gi, "u");
 
   return result;
 }
@@ -56,13 +54,13 @@ function descriptografar(string) {
 btn_criptografar.addEventListener("click", () => {
   const result = criptografar(removeSpecialCharacters(textArea.value))
   inputResultDecrypt.value = result
-  console.log(result)
+  
 })
 
 btn_descriptografar.addEventListener("click", () => {
   const result = descriptografar(textArea.value)
   inputResultDecrypt.value = result
-  console.log(result)
+  
 })
 
 btn_copy.addEventListener("click", () => {
