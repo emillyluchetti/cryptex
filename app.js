@@ -7,21 +7,10 @@ const btn_descriptografar = document.querySelector("#btn_decrypt");
 const btn_copy = document.querySelector("#btn_copy");
 
 
-// removed removeSpecialCharacters function from here
-// as it's not needed anymore
-
-// the event listener now gets the { data } object
-// which represents the letter typed inside the textArea
 textArea.addEventListener("input", ({ data }) => {
-  // checks if typed letter is one of the invalid characters
-  // if true, removes last letter from the textArea which should
-  // be the one the user just typed
-  // if false, adds textArea '.value' into inputResultDecrypt
+ 
   if (data === null) {
-    // sometimes the data object returns a null value, which is
-    // is shown as an error on the console. this condition is optional
-    // but makes sure the console won't be filled with errors
-    // if that matters to you
+    
   } else if (
     data.match(new RegExp(/[A-ZÁÀÃÂÉÈẼÊÍÌĨÎÓÒÕÔÚÙŨÛÇáàãâéèẽêíìĩîóòõôúùũûç0-9]/))
   ) {
